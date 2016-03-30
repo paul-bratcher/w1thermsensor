@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>W1thermsensor by timofurrer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">W1thermsensor</h1>
+      <h2 class="project-tagline">Python package and CLI tool to work with w1 temperature sensors like DS1822, DS18S20 &amp; DS18B20 on the Raspbery Pi, Beagle Bone and similar devices.</h2>
+      <a href="https://github.com/timofurrer/w1thermsensor" class="btn">View on GitHub</a>
+      <a href="https://github.com/timofurrer/w1thermsensor/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/timofurrer/w1thermsensor/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="w1thermsensor" class="anchor" href="#w1thermsensor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>W1ThermSensor</h1>
+
+<p><a href="https://gitter.im/timofurrer/w1thermsensor?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a></p>
+
+<blockquote>
+<p>This little pure python module provides a single class to get the temperature of a w1 therm sensor<br>
+It can be easily used on are Rasperry Pi, Beagle Bone etc. over the GPIO interface.</p>
+</blockquote>
+
+<hr>
+
+<p><a href="https://travis-ci.org/timofurrer/w1thermsensor"><img src="https://travis-ci.org/timofurrer/w1thermsensor.svg?branch=master" alt="Build Status"></a> <a href="http://codecov.io/github/timofurrer/w1thermsensor?branch=master"><img src="http://codecov.io/github/timofurrer/w1thermsensor/coverage.svg?branch=master" alt="codecov.io"></a> <a href="https://codeclimate.com/github/timofurrer/w1thermsensor"><img src="https://codeclimate.com/github/timofurrer/w1thermsensor/badges/gpa.svg" alt="Code Climate"></a>  <a href="https://landscape.io/github/timofurrer/w1thermsensor/master"><img src="https://landscape.io/github/timofurrer/w1thermsensor/master/landscape.svg?style=flat" alt="Code Health"></a> <a href="https://badge.fury.io/py/w1thermsensor"><img src="https://badge.fury.io/py/w1thermsensor.svg" alt="PyPI version"></a> <a href=""><img src="https://img.shields.io/pypi/dm/w1thermsensor.svg" alt="PyPI"></a></p>
+
+<p><strong>Author</strong>: Timo Furrer <a href="mailto:tuxtimo@gmail.com">tuxtimo@gmail.com</a><br>
+<strong>Version</strong>: 0.3.0 <br>
+<strong>License</strong>: MIT</p>
+
+<p><strong>New:</strong> use <a href="#usage-as-cli-tool">w1thermsensor as a CLI tool</a>! - Since version <em>0.3.0</em></p>
+
+<h2>
+<a id="supported-devices" class="anchor" href="#supported-devices" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported devices</h2>
+
+<p>The following w1 therm sensor devices are supported:</p>
+
+<ul>
+<li>DS18S20</li>
+<li>DS1822</li>
+<li>DS18B20</li>
+<li>DS28EA00</li>
+<li>DS1825/MAX31850K</li>
+</ul>
+
+<h2>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup</h2>
+
+<p>You just need a w1 therm sensor. <br>
+Some of them can be bought here: <a href="https://www.adafruit.com/search?q=DS18B20">Adafruit: DS18B20</a> <br>
+I've used a Raspberry Pi with an GPIO Breakout (Pi Cobbler). Other hardware like the Beagle Bone are supported, too.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a id="from-pip" class="anchor" href="#from-pip" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>From PIP</h3>
+
+<p>This possibility is supported on all distribution:</p>
+
+<pre><code>pip install w1thermsensor
+</code></pre>
+
+<p><em>Note: maybe root privileges are required</em></p>
+
+<h3>
+<a id="on-raspbian-using-apt-get" class="anchor" href="#on-raspbian-using-apt-get" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>On Raspbian using apt-get</h3>
+
+<p>If you are using the <code>w1thermsensor</code> module on a Rasperry Pi running raspbian you can install it from the offical repository:</p>
+
+<div class="highlight highlight-source-shell"><pre>sudo apt-get install python-w1thermsensor</pre></div>
+
+<p>Or if you are using python 3:</p>
+
+<div class="highlight highlight-source-shell"><pre>sudo apt-get install python3-w1thermsensor</pre></div>
+
+<h3>
+<a id="create-debian-packages" class="anchor" href="#create-debian-packages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create debian packages</h3>
+
+<p>For python 2:</p>
+
+<pre><code>python setup.py --command-packages=stdeb.command bdist_deb
+</code></pre>
+
+<p>For python 3:</p>
+
+<pre><code>python3 setup.py --command-packages=stdeb.command bdist_deb
+</code></pre>
+
+<h3>
+<a id="from-source" class="anchor" href="#from-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>From Source</h3>
+
+<pre><code>git clone https://github.com/timofurrer/w1thermsensor.git &amp;&amp; cd w1thermsensor
+python setup.py install
+</code></pre>
+
+<p><em>Note: maybe root privileges are required</em></p>
+
+<h2>
+<a id="usage-as-python-package" class="anchor" href="#usage-as-python-package" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage as python package</h2>
+
+<p>The usage is very simple and the interface clean..
+All examples are with the <code>DS18B20</code> sensor - It works the same way for the other supported devices.</p>
+
+<h3>
+<a id="basic-usage-with-one-sensor-implicit" class="anchor" href="#basic-usage-with-one-sensor-implicit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic usage with one sensor (implicit)</h3>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-k">from</span> w1thermsensor <span class="pl-k">import</span> W1ThermSensor
+
+sensor <span class="pl-k">=</span> W1ThermSensor()
+temperature_in_celsius <span class="pl-k">=</span> sensor.get_temperature()
+temperature_in_fahrenheit <span class="pl-k">=</span> sensor.get_temperature(W1ThermSensor.<span class="pl-c1">DEGREES_F</span>)
+temperature_in_all_units <span class="pl-k">=</span> sensor.get_temperatures([W1ThermSensor.<span class="pl-c1">DEGREES_C</span>, W1ThermSensor.<span class="pl-c1">DEGREES_F</span>, W1ThermSensor.<span class="pl-c1">KELVIN</span>])</pre></div>
+
+<p>The need kernel modules will be automatically loaded in the constructor of the <code>W1ThermSensor</code> class. <br>
+If something went wrong an exception is raised.</p>
+
+<p><em>The first found sensor will be taken</em></p>
+
+<h3>
+<a id="basic-usage-with-one-sensor-explicit" class="anchor" href="#basic-usage-with-one-sensor-explicit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic usage with one sensor (explicit)</h3>
+
+<p>The DS18B20 sensor with the ID <code>00000588806a</code> will be taken.</p>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-k">from</span> w1thermsensor <span class="pl-k">import</span> W1ThermSensor
+
+sensor <span class="pl-k">=</span> W1ThermSensor(W1ThermSensor.<span class="pl-c1">THERM_SENSOR_DS18B20</span>, <span class="pl-s"><span class="pl-pds">"</span>00000588806a<span class="pl-pds">"</span></span>)
+temperature_in_celsius <span class="pl-k">=</span> sensor.get_temperature()</pre></div>
+
+<h3>
+<a id="multiple-sensors" class="anchor" href="#multiple-sensors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multiple sensors</h3>
+
+<p>With the <code>get_available_sensors</code> class-method you can get the ids of all available sensors.</p>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-k">from</span> w1thermsensor <span class="pl-k">import</span> W1ThermSensor
+
+<span class="pl-k">for</span> sensor <span class="pl-k">in</span> W1ThermSensor.get_available_sensors():
+    <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Sensor <span class="pl-c1">%s</span> has temperature <span class="pl-c1">%.2f</span><span class="pl-pds">"</span></span> <span class="pl-k">%</span> (sensor.id, sensor.get_temperature()))</pre></div>
+
+<p>Only sensors of a specific therm sensor type:</p>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-k">from</span> w1thermsensor <span class="pl-k">import</span> W1ThermSensor
+
+<span class="pl-k">for</span> sensor <span class="pl-k">in</span> W1ThermSensor.get_available_sensors([W1ThermSensor.<span class="pl-c1">THERM_SENSOR_DS18B20</span>]):
+    <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Sensor <span class="pl-c1">%s</span> has temperature <span class="pl-c1">%.2f</span><span class="pl-pds">"</span></span> <span class="pl-k">%</span> (sensor.id, sensor.get_temperature()))</pre></div>
+
+<h2>
+<a id="usage-as-cli-tool" class="anchor" href="#usage-as-cli-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage as CLI tool</h2>
+
+<p>The w1thermsensor module can be used as CLI tool since version <code>0.3.0</code>.</p>
+
+<h3>
+<a id="list-sensors" class="anchor" href="#list-sensors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List sensors</h3>
+
+<p>List all available sensors:</p>
+
+<pre><code>$ w1thermsensor ls
+$ w1thermsensor ls --json  # show results in JSON format
+</code></pre>
+
+<p>List only sensors of a specific type:</p>
+
+<pre><code>$ w1thermsensor ls --type DS1822
+$ w1thermsensor ls --type DS1822 --type MAX31850K  # specify multiple sensor types
+$ w1thermsensor ls --type DS1822 --json  # show results in JSON format
+</code></pre>
+
+<h3>
+<a id="show-temperatures" class="anchor" href="#show-temperatures" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Show temperatures</h3>
+
+<p>Show temperature of all available sensors: (Same synopsis as <code>ls</code>)</p>
+
+<pre><code>$ w1thermsensor all --type DS1822
+$ w1thermsensor all --type DS1822 --type MAX31850K  # specify multiple sensor types
+$ w1thermsensor all --type DS1822 --json  # show results in JSON format
+</code></pre>
+
+<p>Show temperature of a single sensor:</p>
+
+<pre><code>$ w1thermsensor get 1  # 1 is the id obtained by the ls command
+$ w1thermsensor get --hwid 00000588806a --type DS18B20
+$ w1thermsensor get 1  # show results in JSON format
+</code></pre>
+
+<h2>
+<a id="contribution" class="anchor" href="#contribution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contribution</h2>
+
+<p>Feel free to contribute!
+If you have made any changes and you want to make a <code>pull request</code>:</p>
+
+<ol>
+<li>You are a <strong>pro</strong> to contribute to this repo!</li>
+<li>Please make the tests pass by <code>make tests</code>
+</li>
+<li>Now you can make the <code>pull request</code>
+</li>
+<li>Catch my thank!</li>
+</ol>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/timofurrer/w1thermsensor">W1thermsensor</a> is maintained by <a href="https://github.com/timofurrer">timofurrer</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
