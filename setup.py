@@ -15,8 +15,8 @@ setup(
     maintainer=core.__author__,
     maintainer_email=core.__email__,
     platforms=["Linux"],
-    url="http://github.com/timofurrer/w1thermsensor",
-    download_url="http://github.com/timofurrer/w1thermsensor",
+    url="http://github.com/paul-bratcher/w1thermsensor",
+    download_url="http://github.com/paul-bratcher/w1thermsensor",
     packages=["w1thermsensor"],
     install_requires=["click"],
     entry_points={"console_scripts": ["w1thermsensor = w1thermsensor.cli:cli"]}
