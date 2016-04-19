@@ -228,7 +228,7 @@ class W1ThermSensor(object):
         except KeyError:
             raise UnsupportedUnitError()
 
-    def get_temperature(self, unit=DEGREES_C):
+    def get_temperature(self, unit=DEGREES_F):
         """
             Returns the temperature in the specified unit
 
